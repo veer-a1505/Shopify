@@ -31,7 +31,7 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     category: {
-      type: Boolean,
+      type: String,
       required: true,
     },
     description: {
@@ -55,7 +55,7 @@ const productSchema = mongoose.Schema(
       default: 0,
     },
     countInStock: {
-      type: String,
+      type: Number,
       required: true,
       default: 0,
     },
