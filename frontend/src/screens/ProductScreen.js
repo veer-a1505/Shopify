@@ -8,7 +8,7 @@ import Loader from "../components/Loader"
 import Message from "../components/Message"
 
 const ProductScreen = ({ match, history }) => {
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
 
   const dispatch = useDispatch()
 
@@ -18,7 +18,7 @@ const ProductScreen = ({ match, history }) => {
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id))
-  }, [match])
+  }, [match, dispatch])
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
