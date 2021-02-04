@@ -68,8 +68,8 @@ const registerUser = asyncHanlder(async (req, res) => {
       token: generateToken(user._id),
     })
   } else {
-    res.status(404)
-    throw new Error("user not found")
+    res.status(400)
+    throw new Error("Invalid user data")
   }
 })
 
