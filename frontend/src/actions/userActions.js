@@ -24,7 +24,7 @@ export const login = (email, password) => async (dispatch) => {
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      data,
+      payload: data,
     })
 
     localStorage.setItem("userInfo", JSON.stringify(data))
