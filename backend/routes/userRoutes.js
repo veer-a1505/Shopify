@@ -6,7 +6,7 @@ import {
   getUserProfile,
   registerUser,
   updateUserProfile,
-} from "../controllers/userControler.js"
+} from "../controllers/userController.js"
 import { protect } from "../middleware/authMiddleware.js"
 
 router.post("/login", authUser)
