@@ -47,7 +47,7 @@ const RegisterScreen = ({ location, history }) => {
         <Form.Group controlId='name'>
           <Form.Label>Name</Form.Label>
           <Form.Control
-            type='name'
+            type='text'
             placeholder='Enter name'
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -90,7 +90,7 @@ const RegisterScreen = ({ location, history }) => {
       </Form>
       <Row className='py-3'>
         <Col>
-          Have An Account
+          Have an Account ?
           <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
             Login
           </Link>

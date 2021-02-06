@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 import Message from "../components/Message"
 import Loader from "../components/Loader"
 import { useDispatch, useSelector } from "react-redux"
-import { getUserDetails } from "../actions/userActions"
+import { getUserDetails, updateUserProfile } from "../actions/userActions"
 
 const ProfileScreen = ({ history }) => {
   const [name, setName] = useState("")
@@ -18,10 +18,11 @@ const ProfileScreen = ({ history }) => {
   const userDetails = useSelector((state) => state.userDetails)
   const { loading, error, user } = userDetails
 
-  console.log(user)
-
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
+  const { success } = userUpdateProfile
 
   useEffect(() => {
     if (!userInfo) {
@@ -41,6 +42,7 @@ const ProfileScreen = ({ history }) => {
     if (password !== confirmPassword) {
       setMessage("Password do not match")
     } else {
+      dispatch(updateUserProfile({ id: user._id, name, email, password }))
     }
   }
 
@@ -51,11 +53,12 @@ const ProfileScreen = ({ history }) => {
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
         {loading && <Loader />}
+        {success && <Message variant='success'>Profile Updated</Message>}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name'>
             <Form.Label>Name</Form.Label>
             <Form.Control
-              type='name'
+              type='text'
               placeholder='Enter name'
               value={name}
               onChange={(e) => setName(e.target.value)}
