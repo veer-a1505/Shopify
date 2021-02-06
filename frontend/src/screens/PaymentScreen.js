@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react"
+import React, { useState } from "react"
 import { Col, Form, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import FormContainer from "../components/FormContainer"
@@ -20,7 +20,7 @@ const PaymentScreen = ({ history }) => {
   const submitHandler = (event) => {
     event.preventDefault()
     dispatch(savePaymentMethod(paymentMethod))
-    history.push("/payment")
+    history.push("/placeorder")
   }
 
   return (
